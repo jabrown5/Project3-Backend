@@ -5,7 +5,7 @@ gem 'json'
 gem 'pry'
 gem 'mysql2'
 gem 'sinatra-activerecord'
-gem 'bcrypt'
+gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 gem "sinatra-cross_origin", "~> 0.3.1"
 # gem 'rerun', '~> 0.11.0'
 
