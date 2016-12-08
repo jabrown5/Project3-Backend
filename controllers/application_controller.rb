@@ -8,23 +8,43 @@ class ApplicationController < Sinatra::Base
 	require 'bundler'
 	Bundler.require
 
+	register Sinatra::CrossOrigin
+
   # NEW - - - - - -
   # - - - - - - - -
 
-	# set :public_folder, File.expand_path('../../public', __FILE__)
-	# set :views, File.expand_path('../../views', __FILE__)
+	set :public_folder, File.expand_path('../../public', __FILE__)
+	set :views, File.expand_path('../../views', __FILE__)
 
 	ActiveRecord::Base.establish_connection(
 		:adapter => 'mysql2',
 		:database => 'pottyproject'
 	)
 
-	register Sinatra::CrossOrigin
+
+  require 'sinatra'
+  require 'sinatra/cross_origin'
+
+  set :allow_origin, :any
+  set :allow_methods, [:get, :post, :patch, :delete]
+
+  options "*" do
+    response.headers["Allow"] = "HEAD,GET,PUT,POST,DELETE,OPTIONS"
+
+    response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
+
+    200
+  end
+
+  
+
 	configure do
 		enable :cross_origin
 	end
 
 	enable :sessions, :logging  # is all it takes to enable sessions
+
+
 
 
 	not_found do
