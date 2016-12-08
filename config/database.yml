@@ -1,0 +1,25 @@
+# drop user jen@localhost;
+# create user 'jen'@'localhost' identified by 'jen';
+# grant all privileges on pottyproject.* to 'jen'@'localhost';
+# flush privileges;
+
+default:
+  adapter: mysql2
+  database: pottyproject
+  username: jen
+  password: jen
+  host: localhost
+
+development:
+  adapter: mysql2
+  database: pottyproject
+  username: jen
+  password: jen
+  host: localhost
+
+production:
+  adapter: mysql2
+  database: pottyproject
+  username: jen
+  password: jen
+  host: localhost
