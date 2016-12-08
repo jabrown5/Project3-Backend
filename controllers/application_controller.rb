@@ -57,46 +57,46 @@ ActiveRecord::Base.establish_connection(
 
 	end
 
-	# ENABLING THIS TEMPORARILY TO MAKE SURE THINGS ARE WORKING
-	def does_user_exist?(username)
-		user = Account.find_by(:username => username.to_s)
-		if user
-			return true
-		else
-			return false
-		end
-	end
+	# # ENABLING THIS TEMPORARILY TO MAKE SURE THINGS ARE WORKING
+	# def does_user_exist?(username)
+	# 	user = Account.find_by(:username => username.to_s)
+	# 	if user
+	# 		return true
+	# 	else
+	# 		return false
+	# 	end
+	# end
 
-	# ENABLING THIS TEMPORARILY TO MAKE SURE THINGS ARE WORKING
-	def is_not_authenticated
-		p session
-		session[:user].nil?	#bool
-	end
+	# # ENABLING THIS TEMPORARILY TO MAKE SURE THINGS ARE WORKING
+	# def is_not_authenticated
+	# 	p session
+	# 	session[:user].nil?	#bool
+	# end
 
-	def does_key_work?(key)
-		key_string = key.to_s
-		user = Account.where(:api_key => key_string)
-		if user != nil 
-			return true
-		else
-			return false
-		end
-	end
+	# def does_key_work?(key)
+	# 	key_string = key.to_s
+	# 	user = Account.where(:api_key => key_string)
+	# 	if user != nil 
+	# 		return true
+	# 	else
+	# 		return false
+	# 	end
+	# end
 
-  # ENABLING THIS TEMPORARILY TO MAKE SURE THINGS ARE WORKING
-	get '/' do
-		# erb :home
-		{:message => "home page"}.to_json
-	end
+ #  # ENABLING THIS TEMPORARILY TO MAKE SURE THINGS ARE WORKING
+	# get '/' do
+	# 	# erb :home
+	# 	{:message => "home page"}.to_json
+	# end
 
-	before '/*' do
-	  puts "Session Log:"
-	  p session
-	end
+	# before '/*' do
+	#   puts "Session Log:"
+	#   p session
+	# end
 
-	after '/*' do
-	  puts "Session Log:"
-	  p session
-	end
+	# after '/*' do
+	#   puts "Session Log:"
+	#   p session
+	# end
 
 end
