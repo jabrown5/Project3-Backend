@@ -14,19 +14,19 @@ class ApplicationController < Sinatra::Base
 	set :public_folder, File.expand_path('../../public', __FILE__)
 	set :views, File.expand_path('../../views', __FILE__)
 
-	# ActiveRecord::Base.establish_connection(
-	# 	:adapter => 'mysql2',
-	# 	:database => 'pottyproject'
-	# )
+	ActiveRecord::Base.establish_connection(
+		:adapter => 'mysql2',
+		:database => 'pottyproject'
+	)
 
 
-ActiveRecord::Base.establish_connection(
-    :adapter  => ENV['mysql2'],
-    # :host     => ENV['host'],
-    :username => ENV['username'],
-    :password => ENV['password'],
-    :database => ENV['pottyproject']
-  )
+# ActiveRecord::Base.establish_connection(
+#     :adapter  => ENV['mysql2'],
+#     :host     => ENV['host'],
+#     :username => ENV['username'],
+#     :password => ENV['password'],
+#     :database => ENV['pottyproject']
+#   )
 
 
   require 'sinatra'
