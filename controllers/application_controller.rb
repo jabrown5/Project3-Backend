@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
 
 ActiveRecord::Base.establish_connection(
     :adapter  => ENV['mysql2'],
-    :host     => ENV['host'],
+    # :host     => ENV['host'],
     :username => ENV['username'],
     :password => ENV['password'],
     :database => ENV['pottyproject']
