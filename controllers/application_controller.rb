@@ -3,8 +3,6 @@ class ApplicationController < Sinatra::Base
 	@account_message = ""
 	@username = ''
 
-
-
 	require 'bundler'
 	Bundler.require
 
@@ -13,13 +11,22 @@ class ApplicationController < Sinatra::Base
   # NEW - - - - - -
   # - - - - - - - -
 
-	set :public_folder, File.expand_path('../../public', __FILE__)
-	set :views, File.expand_path('../../views', __FILE__)
+	# set :public_folder, File.expand_path('../../public', __FILE__)
+	# set :views, File.expand_path('../../views', __FILE__)
 
-	ActiveRecord::Base.establish_connection(
-		:adapter => 'mysql2',
-		:database => 'pottyproject'
-	)
+	# ActiveRecord::Base.establish_connection(
+	# 	:adapter => 'mysql2',
+	# 	:database => 'pottyproject'
+	# )
+
+
+ActiveRecord::Base.establish_connection(
+    :adapter  => ENV['adapter'],
+    :host     => ENV['host'],
+    :username => ENV['user'],
+    :password => ENV['password'],
+    :database => ENV['database']
+  )
 
 
   require 'sinatra'
@@ -30,21 +37,18 @@ class ApplicationController < Sinatra::Base
 
   options "*" do
     response.headers["Allow"] = "HEAD,GET,PUT,POST,DELETE,OPTIONS"
-
     response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
 
     200
   end
 
-  
-
 	configure do
 		enable :cross_origin
 	end
 
+
+
 	enable :sessions, :logging  # is all it takes to enable sessions
-
-
 
 
 	not_found do
