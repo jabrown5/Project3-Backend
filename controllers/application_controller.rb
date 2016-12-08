@@ -11,8 +11,8 @@ class ApplicationController < Sinatra::Base
   # NEW - - - - - -
   # - - - - - - - -
 
-	# set :public_folder, File.expand_path('../../public', __FILE__)
-	# set :views, File.expand_path('../../views', __FILE__)
+	set :public_folder, File.expand_path('../../public', __FILE__)
+	set :views, File.expand_path('../../views', __FILE__)
 
 	ActiveRecord::Base.establish_connection(
 		:adapter => 'mysql2',
